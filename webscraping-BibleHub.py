@@ -6,16 +6,16 @@ from urllib.request import urlopen, Request
 #https://ebible.org/asv/1JN05.htm
 
 
-random_chapter = random.randint(1,21)
+random_chapter = str(random.randint(1,21))
 
-if random_chapter < 10:
-    random_chapter = '0' + str(random_chapter)
-else:
-    random_chapter = str(random_chapter)
+#if random_chapter < 10:
+    #random_chapter = '0' + str(random_chapter)
+#else:
+    #random_chapter = str(random_chapter)
 
 
 
-webpage = 'https://ebible.org/asv/JHN' + random_chapter + '.htm'
+webpage = 'https://biblehub.com/john/' + random_chapter + '.htm'
 
 print(webpage)
 
@@ -27,7 +27,7 @@ webpage = urlopen(req).read()
 
 soup = BeautifulSoup(webpage, 'html.parser')
 
-page_verses = soup.findAll('div',class_='main')
+page_verses = soup.findAll('div',class_='chap')
 
 
 verse_list = []
@@ -37,13 +37,13 @@ for verse in page_verses:
     #print(verse)
     verse_list = verse.text.split(".")
 
-myverse = 'Chapter '+ random_chapter + ' Verse:'+ random.choice(verse_list[:len(verse_list)-2])
+myverse = 'Chapter: '+ random_chapter + ' Verse: '+ random.choice(verse_list[:len(verse_list)-2])
 
-print('\n')
+#print('\n')
 print(myverse)
 
 
-
+'''
 import keys2
 from twilio.rest import Client
 
@@ -56,6 +56,6 @@ textmsg =client.messages.create(to=myCellphone,from_=TwilioNumber,body=myverse)
 
 print(textmsg.status)
 
-
+'''
 
 
