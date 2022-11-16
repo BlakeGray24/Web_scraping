@@ -43,7 +43,7 @@ myverse = 'Chapter: '+ random_chapter + ' Verse: '+ random.choice(verse_list[:le
 print(myverse)
 
 
-'''
+
 import keys2
 from twilio.rest import Client
 
@@ -56,6 +56,6 @@ textmsg =client.messages.create(to=myCellphone,from_=TwilioNumber,body=myverse)
 
 print(textmsg.status)
 
-'''
+
 
 
